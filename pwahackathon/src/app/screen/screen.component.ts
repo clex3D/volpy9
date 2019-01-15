@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SwUpdate} from '@angular/service-worker';
+import {SharedService} from '../shared.service';
 
 @Component({
   selector: 'app-screen',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScreenComponent implements OnInit {
 
-  constructor() { }
+  constructor(updates: SwUpdate, private _sharedService: SharedService) {
+    updates.available.subscribe(event => {
+      updates.activateUpdate().then(() => document.location.reload());
+    });
+  }
 
   ngOnInit() {
   }

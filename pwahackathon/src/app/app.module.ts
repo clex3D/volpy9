@@ -10,6 +10,8 @@ import { FlashvibrateComponent } from './flashvibrate/flashvibrate.component';
 import { SongComponent } from './song/song.component';
 import { FonctionComponent } from './fonction/fonction.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { WindowRefService } from './window-ref.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
+    FormsModule
 
   ],
-  providers: [SharedService],
+  providers: [SharedService, WindowRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
