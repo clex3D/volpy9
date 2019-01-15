@@ -8,7 +8,7 @@ import {SharedService} from '../shared.service';
   styles: []
 })
 export class ScreenComponent implements OnInit {
-
+  info: string;
   constructor(updates: SwUpdate, private _sharedService: SharedService) {
     updates.available.subscribe(event => {
       updates.activateUpdate().then(() => document.location.reload());
@@ -16,6 +16,7 @@ export class ScreenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.info = navigator.userAgent;
   }
 
 }
