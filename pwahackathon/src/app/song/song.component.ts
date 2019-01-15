@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {User} from '../user.model';
 
 @Component({
@@ -7,34 +7,30 @@ import {User} from '../user.model';
   styles: []
 })
 export class SongComponent implements OnInit {
-
+  @ViewChild('audio') audio;
 
   constructor() { }
-
-  ngOnInit() {
-    function getUserMedia(options, successCallback, failureCallback) {
+  getUserMedia(options, successCallback, failureCallback) {
       const api = navigator.getUserMedia;
       if (api) {
         return api.bind(navigator)(options, successCallback, failureCallback);
       }
     }
-
-    function getStream (type) {
+  getStream (type) {
       if (!navigator.getUserMedia) {
         alert('User Media API not supported.');
         return;
       }
       const constraints = {};
       constraints[type] = true;
-      getUserMedia(constraints, function (stream) {
-        const mediaControl = document.querySelector(type);
-        const prog = new User();
-        prog.test = mediaControl;
+      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+        this.audio.nativeElement.srcObject = stream;
+        // this.videosource = this._windowref.nativeWindow.URL
+        console.log('tot', this.audio);
       }, function (err) {
         alert('Error: ' + err);
       });
     }
-
+  ngOnInit() {
   }
-
 }

@@ -11,14 +11,15 @@
   <button id="snap">prendre une  Photo</button>
   <canvas id="canvas" width="640" height="480"></canvas>>
 </div>
+<div id="video-container2">
+  <video id="video2" #video width="640" height="480" autoplay><source src="{{ videosource2 }}" type="video/mp4" /></video>
+</div>
 <h2> cela a-t-il fonctionné </h2>
 <div id="verif">
   <button id="phoui1" value=200 onClick="">oui</button>
   <button (click)="show()">test</button>
   <input type='text' [(ngModel)]="loginInput"/>
 </div>
-<script >
 
-</script>
 </body>
 </html>

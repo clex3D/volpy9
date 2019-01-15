@@ -1,1 +1,21 @@
-<p><button type="button" class="btn btn-lg btn-default" onclick="getStream('audio')">Grab audio</button></p>
+<!DOCTYPE html>
+<html>
+<title>Verification Son</title>
+<meta charset="UTF-8">
+<style>
+</style>
+
+<body>
+<h2> Vérification fonctionnalité du son enregistreur </h2>
+<form id="vib" >
+
+  <div id="div_verif_vibreur">
+    <div class="col-sm-6">
+      <p><button type="button" class="btn btn-lg btn-default" (click)="getStream('audio')">Enregistrer</button></p>
+
+      <audio id="audio" controls autoplay> <source src="{{ audiosource }}" type="audio/mp4" ></audio>
+
+    </div>
+  </div>
+</form>
+</body>
